@@ -47,7 +47,7 @@ const App = () => {
     {
       platform: "TikTok",
       username: "@dewrld",
-      url: "https://tiktok.com/@dewrld",
+      url: "https://www.tiktok.com/@dewwrld",
       icon: "🎵",
     },
   ];
