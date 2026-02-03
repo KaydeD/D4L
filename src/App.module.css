@@ -14,7 +14,7 @@
   min-height: 100vh;
   background: var(--d4l-darker);
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -239,6 +239,9 @@
   opacity: 0;
   transform: translateX(-50px);
   backdrop-filter: blur(10px);
+  cursor: pointer;
+  /* Ensure proper touch target size on mobile */
+  min-height: 60px;
 }
 
 .linkCard.visible {
@@ -268,6 +271,11 @@
 
 .linkCard:hover::before {
   opacity: 0.1;
+}
+
+/* Active state for mobile tap feedback */
+.linkCard:active {
+  transform: scale(0.98);
 }
 
 .linkGlow {
@@ -306,12 +314,16 @@
   flex: 1;
   position: relative;
   z-index: 2;
+  min-width: 0; /* Allow text to shrink on small screens */
 }
 
 .linkPlatform {
   font-size: 1.1rem;
   font-weight: 700;
   color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .linkUsername {
@@ -319,6 +331,9 @@
   font-size: 0.85rem;
   color: var(--text-secondary);
   font-weight: 400;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .linkArrow {
@@ -343,6 +358,8 @@
   opacity: 0;
   transform: translateY(20px);
   transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.8s;
+  max-width: 600px;
+  padding: 0 1rem;
 }
 
 .footer.visible {
@@ -358,6 +375,7 @@
   margin: 0 0 0.75rem 0;
   letter-spacing: 0.02em;
   padding: 0 1rem;
+  word-wrap: break-word;
 }
 
 .copyright {
@@ -371,13 +389,26 @@
 
 /* Responsive design */
 @media (max-width: 768px) {
+  .container {
+    padding: 1.5rem 1rem;
+  }
+
   .logo {
     font-size: 4.5rem;
+  }
+
+  .tagline {
+    font-size: 0.8rem;
+  }
+
+  .profileSection {
+    margin-bottom: 2rem;
   }
 
   .profileImageContainer {
     width: 120px;
     height: 120px;
+    margin-bottom: 1.5rem;
   }
 
   .imageGlow {
@@ -385,13 +416,22 @@
     height: 150px;
   }
 
+  .linksContainer {
+    gap: 0.875rem;
+    margin-bottom: 2rem;
+  }
+
   .linkCard {
     padding: 1.25rem 1.5rem;
     gap: 1rem;
   }
 
+  .linkCard:hover {
+    transform: scale(1.01);
+  }
+
   .linkIcon {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
   }
 
   .linkPlatform {
@@ -401,18 +441,206 @@
   .linkUsername {
     font-size: 0.8rem;
   }
+
+  .linkArrow {
+    font-size: 1.25rem;
+  }
+
+  .businessInquiry {
+    font-size: 0.85rem;
+    padding: 0 0.5rem;
+  }
+
+  .copyright {
+    font-size: 0.7rem;
+  }
+
+  /* Reduce floating orb sizes on tablet */
+  .orb1 {
+    width: 250px;
+    height: 250px;
+  }
+
+  .orb2 {
+    width: 300px;
+    height: 300px;
+  }
+
+  .orb3 {
+    width: 200px;
+    height: 200px;
+  }
 }
 
 @media (max-width: 480px) {
+  .container {
+    padding: 1rem 0.75rem;
+  }
+
   .logo {
     font-size: 3.5rem;
   }
 
   .tagline {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+  }
+
+  .profileSection {
+    margin-bottom: 1.5rem;
+  }
+
+  .profileImageContainer {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 1.25rem;
+  }
+
+  .imageGlow {
+    width: 130px;
+    height: 130px;
+  }
+
+  .linksContainer {
+    gap: 0.75rem;
+    padding: 0 0.5rem;
+    margin-bottom: 1.5rem;
   }
 
   .linkCard {
     padding: 1rem 1.25rem;
+    gap: 0.875rem;
+    border-radius: 12px;
+  }
+
+  .linkIcon {
+    font-size: 1.5rem;
+  }
+
+  .linkPlatform {
+    font-size: 0.95rem;
+  }
+
+  .linkUsername {
+    font-size: 0.75rem;
+  }
+
+  .linkArrow {
+    font-size: 1.1rem;
+  }
+
+  .businessInquiry {
+    font-size: 0.8rem;
+    padding: 0 0.25rem;
+    line-height: 1.5;
+  }
+
+  .copyright {
+    font-size: 0.65rem;
+  }
+
+  /* Further reduce orbs on mobile */
+  .orb1 {
+    width: 200px;
+    height: 200px;
+    filter: blur(60px);
+  }
+
+  .orb2 {
+    width: 250px;
+    height: 250px;
+    filter: blur(60px);
+  }
+
+  .orb3 {
+    width: 150px;
+    height: 150px;
+    filter: blur(60px);
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 360px) {
+  .logo {
+    font-size: 3rem;
+  }
+
+  .tagline {
+    font-size: 0.65rem;
+  }
+
+  .profileImageContainer {
+    width: 90px;
+    height: 90px;
+  }
+
+  .imageGlow {
+    width: 120px;
+    height: 120px;
+  }
+
+  .linkCard {
+    padding: 0.875rem 1rem;
+    gap: 0.75rem;
+  }
+
+  .linkIcon {
+    font-size: 1.25rem;
+  }
+
+  .linkPlatform {
+    font-size: 0.875rem;
+  }
+
+  .linkUsername {
+    font-size: 0.7rem;
+  }
+
+  .businessInquiry {
+    font-size: 0.75rem;
+  }
+}
+
+/* Landscape mobile optimization */
+@media (max-height: 600px) and (orientation: landscape) {
+  .container {
+    padding: 1rem;
+    justify-content: flex-start;
+  }
+
+  .profileSection {
+    margin-bottom: 1rem;
+  }
+
+  .profileImageContainer {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 0.75rem;
+  }
+
+  .imageGlow {
+    width: 100px;
+    height: 100px;
+  }
+
+  .logo {
+    font-size: 2.5rem;
+  }
+
+  .tagline {
+    font-size: 0.65rem;
+  }
+
+  .linksContainer {
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .linkCard {
+    padding: 0.75rem 1rem;
+  }
+
+  .footer {
+    margin-top: 1rem;
   }
 }

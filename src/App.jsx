@@ -27,6 +27,12 @@ const App = () => {
       icon: "📸",
     },
     {
+      platform: "Instagram Channel",
+      username: "AbYIYYVgKr0PkmbZ",
+      url: "https://www.instagram.com/channel/AbYIYYVgKr0PkmbZ/",
+      icon: "📺",
+    },
+    {
       platform: "X (Twitter)",
       username: "@dewrlddd",
       url: "https://x.com/dewrlddd",
@@ -39,9 +45,15 @@ const App = () => {
       icon: "▶",
     },
     {
+      platform: "Kick",
+      username: "dewrld",
+      url: "https://kick.com/dewrld",
+      icon: "🎮",
+    },
+    {
       platform: "Discord",
-      username: "SNHbz2kRUz",
-      url: "https://discord.gg/SNHbz2kRUz",
+      username: "vzFmZfWsMx",
+      url: "https://discord.com/invite/vzFmZfWsMx",
       icon: "💬",
     },
     {
