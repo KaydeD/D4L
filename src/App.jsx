@@ -2,6 +2,11 @@ import { useState, useEffect } from "react";
 import profile from './assets/profile.png';
 
 import styles from "./App.module.css";
+import KickLogo from "./components/kick";
+import InstagramLogo from "./components/instagram";
+import DiscordLogo from "./components/discord";
+import YoutubeLogo from "./components/youtube";
+import TiktokLogo from "./components/tiktok";
 
 const App = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -21,17 +26,30 @@ const App = () => {
 
   const socials = [
     {
-      platform: "Instagram",
-      username: "@dewrldlive",
-      url: "https://instagram.com/dewrldlive",
-      icon: "📸",
+      platform: "Kick",
+      username: "dewrld",
+      url: "https://kick.com/dewrld",
+      icon: <KickLogo />,
     },
     {
       platform: "Instagram Channel",
       username: "AbYIYYVgKr0PkmbZ",
       url: "https://www.instagram.com/channel/AbYIYYVgKr0PkmbZ/",
-      icon: "📺",
+      icon: <InstagramLogo />,
     },
+    {
+      platform: "Discord",
+      username: "vzFmZfWsMx",
+      url: "https://discord.com/invite/vzFmZfWsMx",
+      icon: <DiscordLogo />,
+    },
+    {
+      platform: "Instagram",
+      username: "@dewrldlive",
+      url: "https://instagram.com/dewrldlive",
+      icon: <InstagramLogo />,
+    },
+    
     {
       platform: "X (Twitter)",
       username: "@dewrlddd",
@@ -42,25 +60,13 @@ const App = () => {
       platform: "YouTube",
       username: "@dewrld",
       url: "https://youtube.com/@dewrld",
-      icon: "▶",
-    },
-    {
-      platform: "Kick",
-      username: "dewrld",
-      url: "https://kick.com/dewrld",
-      icon: "🎮",
-    },
-    {
-      platform: "Discord",
-      username: "vzFmZfWsMx",
-      url: "https://discord.com/invite/vzFmZfWsMx",
-      icon: "💬",
+      icon: <YoutubeLogo />,
     },
     {
       platform: "TikTok",
       username: "@dewrld",
       url: "https://www.tiktok.com/@dewwrld",
-      icon: "🎵",
+      icon: <TiktokLogo />,
     },
   ];
 
